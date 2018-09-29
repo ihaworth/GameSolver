@@ -60,4 +60,22 @@ class SingleRabbitOneHopAwayTest {
                                 "     "), equalTo("W(S)"))
     }
 
+    @Test
+    fun jumpEastToSWHole() {
+        assertThat(jumpIn.solve("     ",
+                                "     ",
+                                "     ",
+                                "     ",
+                                "  WM "), equalTo("W(E)"))
+    }
+
+    @Test
+    fun jumpSouthToSEHole() {
+        assertThat(jumpIn.solve("     ",
+                                "     ",
+                                "    W",
+                                "    M",
+                                "     "), equalTo("W(S)"))
+    }
+
 }
