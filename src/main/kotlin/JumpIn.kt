@@ -22,6 +22,15 @@ class JumpIn {
         if (config[3][4] == 'M')
             return "W(S)"
 
+        if (config[1][2] == 'M')
+            return "W(S)"
+        if (config[2][3] == 'M')
+            return "W(W)"
+        if (config[3][2] == 'M')
+            return "W(N)"
+        if (config[2][1] == 'M')
+            return "W(E)"
+
         return ""
     }
 }
