@@ -1,34 +1,34 @@
 
 class JumpIn {
 
-    fun solve(vararg config: String): String {
-        if (config[0][1] == 'M')
+    fun solve(vararg board: String): String {
+        if (board[0][1] == 'M' && board[0][2] == 'W')
             return "W(W)"
-        if (config[1][0] == 'M')
+        if (board[1][0] == 'M' && board[2][0] == 'W')
             return "W(N)"
 
-        if (config[0][3] == 'M')
+        if (board[0][3] == 'M' && board[0][2] == 'W')
             return "W(E)"
-        if (config[1][4] == 'M')
+        if (board[1][4] == 'M' && board[2][4] == 'W')
             return "W(N)"
 
-        if (config[4][1] == 'M')
+        if (board[4][1] == 'M' && board[4][2] == 'W')
             return "W(W)"
-        if (config[3][0] == 'M')
+        if (board[3][0] == 'M' && board[2][0] == 'W')
             return "W(S)"
 
-        if (config[4][3] == 'M')
+        if (board[4][3] == 'M' && board[4][2] == 'W')
             return "W(E)"
-        if (config[3][4] == 'M')
+        if (board[3][4] == 'M' && board[2][4] == 'W')
             return "W(S)"
 
-        if (config[1][2] == 'M')
+        if (board[1][2] == 'M' && board[0][2] == 'W')
             return "W(S)"
-        if (config[2][3] == 'M')
+        if (board[2][3] == 'M' && board[2][4] == 'W')
             return "W(W)"
-        if (config[3][2] == 'M')
+        if (board[3][2] == 'M' && board[4][2] == 'W')
             return "W(N)"
-        if (config[2][1] == 'M')
+        if (board[2][1] == 'M' && board[2][0] == 'W')
             return "W(E)"
 
         return ""
