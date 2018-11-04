@@ -3,7 +3,7 @@ class JumpIn {
 
     fun solve(vararg board: String): String {
 
-        val (rabbitRow, rabbitCol) = locate(board)
+        val (rabbitRow, rabbitCol) = locate('W', board)
 
         if (rabbitCol > 0 && board[rabbitRow    ][rabbitCol - 1] == 'M') return "W" + "(W)"
         if (rabbitRow > 0 && board[rabbitRow - 1][rabbitCol    ] == 'M') return "W" + "(N)"
@@ -13,13 +13,13 @@ class JumpIn {
         return ""
     }
 
-    private fun locate(board: Array<out String>): Pair<Int, Int> {
+    private fun locate(piece: Char, board: Array<out String>): Pair<Int, Int> {
         var rabbitRow = -1
         var rabbitCol = -1
 
         for (row in 0..4)
             for (col in 0..4)
-                if (board[row][col] == 'W') {
+                if (board[row][col] == piece) {
                     rabbitRow = row
                     rabbitCol = col
                     break
