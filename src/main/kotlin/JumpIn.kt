@@ -35,8 +35,6 @@ class JumpIn {
 }
 
 class Coordinate(val row: Int, val col: Int) {
-    constructor(pair: Pair<Int, Int>) : this(pair.first, pair.second)
-
     fun  west() = if (col == 0) null else Coordinate(row    , col - 1)
     fun north() = if (row == 0) null else Coordinate(row - 1, col    )
     fun  east() = if (col == 4) null else Coordinate(row    , col + 1)
