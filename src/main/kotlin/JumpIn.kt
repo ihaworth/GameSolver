@@ -18,10 +18,8 @@ class JumpIn {
     }
 
     private fun pieceAt(coord: Coordinate?, board: Array<out String>): Char? {
-        if (coord == null) return null
-        return board[coord.row][coord.col]
+        return coord?.pieceAt(board)
     }
-
 
     private fun locate(piece: Char, board: Array<out String>): Coordinate? {
         for (row in 0..4)
@@ -39,4 +37,6 @@ class Coordinate(val row: Int, val col: Int) {
     fun north() = if (row == 0) null else Coordinate(row - 1, col    )
     fun  east() = if (col == 4) null else Coordinate(row    , col + 1)
     fun south() = if (row == 4) null else Coordinate(row + 1, col    )
+
+    fun pieceAt(board: Array<out String>) = board[row][col]
 }
