@@ -5,18 +5,18 @@ class JumpIn {
 
         val (rabbitRow, rabbitCol) = locate('W', board)
 
-        if (rabbitCol > 0 && pieceAt(Coordinate(west (rabbitRow, rabbitCol)), board) == 'M') return "W" + "(W)"
-        if (rabbitRow > 0 && pieceAt(Coordinate(north(rabbitRow, rabbitCol)), board) == 'M') return "W" + "(N)"
-        if (rabbitCol < 4 && pieceAt(Coordinate(east (rabbitRow, rabbitCol)), board) == 'M') return "W" + "(E)"
-        if (rabbitRow < 4 && pieceAt(Coordinate(south(rabbitRow, rabbitCol)), board) == 'M') return "W" + "(S)"
+        if (rabbitCol > 0 && pieceAt( west(rabbitRow, rabbitCol), board) == 'M') return "W" + "(W)"
+        if (rabbitRow > 0 && pieceAt(north(rabbitRow, rabbitCol), board) == 'M') return "W" + "(N)"
+        if (rabbitCol < 4 && pieceAt( east(rabbitRow, rabbitCol), board) == 'M') return "W" + "(E)"
+        if (rabbitRow < 4 && pieceAt(south(rabbitRow, rabbitCol), board) == 'M') return "W" + "(S)"
 
         return ""
     }
 
-    private fun  west(row: Int, col: Int): Pair<Int, Int> = Pair(row    , col - 1)
-    private fun north(row: Int, col: Int): Pair<Int, Int> = Pair(row - 1, col    )
-    private fun  east(row: Int, col: Int): Pair<Int, Int> = Pair(row    , col + 1)
-    private fun south(row: Int, col: Int): Pair<Int, Int> = Pair(row + 1, col    )
+    private fun  west(row: Int, col: Int) = Coordinate(row    , col - 1)
+    private fun north(row: Int, col: Int) = Coordinate(row - 1, col    )
+    private fun  east(row: Int, col: Int) = Coordinate(row    , col + 1)
+    private fun south(row: Int, col: Int) = Coordinate(row + 1, col    )
 
 
     private fun pieceAt(coord: Coordinate, board: Array<out String>): Char {
