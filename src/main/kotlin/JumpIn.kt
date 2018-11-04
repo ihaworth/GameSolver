@@ -8,22 +8,22 @@ class JumpIn {
         if ((board[0][2] == 'W' && board[rabbitRow][rabbitCol - 1] == 'M') ||
             (board[4][2] == 'W' && board[rabbitRow][rabbitCol - 1] == 'M') ||
             (board[2][4] == 'W' && board[rabbitRow][rabbitCol - 1] == 'M'))
-            return "W(W)"
+            return "W" + "(W)"
 
         if ((board[2][0] == 'W' && board[rabbitRow - 1][rabbitCol] == 'M') ||
             (board[2][4] == 'W' && board[rabbitRow - 1][rabbitCol] == 'M') ||
             (board[4][2] == 'W' && board[rabbitRow - 1][rabbitCol] == 'M'))
-            return "W(N)"
+            return "W" + "(N)"
 
         if ((board[0][2] == 'W' && board[rabbitRow][rabbitCol + 1] == 'M') ||
             (board[4][2] == 'W' && board[rabbitRow][rabbitCol + 1] == 'M') ||
             (board[2][0] == 'W' && board[rabbitRow][rabbitCol + 1] == 'M'))
-            return "W(E)"
+            return "W" + "(E)"
 
         if ((board[2][0] == 'W' && board[rabbitRow + 1][rabbitCol] == 'M') ||
             (board[2][4] == 'W' && board[rabbitRow + 1][rabbitCol] == 'M') ||
             (board[0][2] == 'W' && board[rabbitRow + 1][rabbitCol] == 'M'))
-            return "W(S)"
+            return "W" + "(S)"
 
         return ""
     }
