@@ -3,12 +3,12 @@ class JumpIn {
 
     fun solve(vararg board: String): String {
 
-        val (rabbitRow, rabbitCol) = locate('W', board)
+        val rabbit = locate('W', board)
 
-        if (rabbitCol > 0 && pieceAt(Coordinate(rabbitRow, rabbitCol). west(), board) == 'M') return "W" + "(W)"
-        if (rabbitRow > 0 && pieceAt(Coordinate(rabbitRow, rabbitCol).north(), board) == 'M') return "W" + "(N)"
-        if (rabbitCol < 4 && pieceAt(Coordinate(rabbitRow, rabbitCol). east(), board) == 'M') return "W" + "(E)"
-        if (rabbitRow < 4 && pieceAt(Coordinate(rabbitRow, rabbitCol).south(), board) == 'M') return "W" + "(S)"
+        if (rabbit.col > 0 && pieceAt(rabbit. west(), board) == 'M') return "W" + "(W)"
+        if (rabbit.row > 0 && pieceAt(rabbit.north(), board) == 'M') return "W" + "(N)"
+        if (rabbit.col < 4 && pieceAt(rabbit. east(), board) == 'M') return "W" + "(E)"
+        if (rabbit.row < 4 && pieceAt(rabbit.south(), board) == 'M') return "W" + "(S)"
 
         return ""
     }
@@ -18,7 +18,7 @@ class JumpIn {
     }
 
 
-    private fun locate(piece: Char, board: Array<out String>): Pair<Int, Int> {
+    private fun locate(piece: Char, board: Array<out String>): Coordinate {
         var rabbitRow = -1
         var rabbitCol = -1
 
@@ -29,7 +29,7 @@ class JumpIn {
                     rabbitCol = col
                     break
                 }
-        return Pair(rabbitRow, rabbitCol)
+        return Coordinate(rabbitRow, rabbitCol)
     }
 
 }
