@@ -3,12 +3,16 @@ class JumpIn {
 
     fun solve(vararg board: String): String {
 
-        val rabbit = locate('W', board)
+        return move('W', board) + move('G', board)
+    }
 
-        if (pieceAt(rabbit. west(), board) == 'M') return "W" + "(W)"
-        if (pieceAt(rabbit.north(), board) == 'M') return "W" + "(N)"
-        if (pieceAt(rabbit. east(), board) == 'M') return "W" + "(E)"
-        if (pieceAt(rabbit.south(), board) == 'M') return "W" + "(S)"
+    private fun move(bunny: Char, board: Array<out String>): String {
+        val rabbit = locate(bunny, board)
+
+        if (pieceAt(rabbit?. west(), board) == 'M') return bunny + "(W)"
+        if (pieceAt(rabbit?.north(), board) == 'M') return bunny + "(N)"
+        if (pieceAt(rabbit?. east(), board) == 'M') return bunny + "(E)"
+        if (pieceAt(rabbit?.south(), board) == 'M') return bunny + "(S)"
 
         return ""
     }
@@ -19,18 +23,13 @@ class JumpIn {
     }
 
 
-    private fun locate(piece: Char, board: Array<out String>): Coordinate {
-        var rabbitRow = -1
-        var rabbitCol = -1
-
+    private fun locate(piece: Char, board: Array<out String>): Coordinate? {
         for (row in 0..4)
             for (col in 0..4)
                 if (board[row][col] == piece) {
-                    rabbitRow = row
-                    rabbitCol = col
-                    break
+                    return Coordinate(row, col)
                 }
-        return Coordinate(rabbitRow, rabbitCol)
+        return null
     }
 
 }
