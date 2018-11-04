@@ -6,19 +6,19 @@ class JumpIn {
         val (rabbitRow, rabbitCol) = locate(board)
 
         if (rabbitCol > 0 &&
-                board[rabbitRow][rabbitCol] == 'W' && board[rabbitRow][rabbitCol - 1] == 'M')
+                board[rabbitRow][rabbitCol - 1] == 'M')
             return "W" + "(W)"
 
         if (rabbitRow > 0 &&
-                board[rabbitRow][rabbitCol] == 'W' && board[rabbitRow - 1][rabbitCol] == 'M')
+                board[rabbitRow - 1][rabbitCol] == 'M')
             return "W" + "(N)"
 
         if (rabbitCol < 4 &&
-                board[rabbitRow][rabbitCol] == 'W' && board[rabbitRow][rabbitCol + 1] == 'M')
+                board[rabbitRow][rabbitCol + 1] == 'M')
             return "W" + "(E)"
 
         if (rabbitRow < 4 &&
-                board[rabbitRow][rabbitCol] == 'W' && board[rabbitRow + 1][rabbitCol] == 'M')
+                board[rabbitRow + 1][rabbitCol] == 'M')
             return "W" + "(S)"
 
         return ""
