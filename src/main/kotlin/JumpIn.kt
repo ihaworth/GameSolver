@@ -1,9 +1,9 @@
 
 class JumpIn {
 
-    fun solve(vararg board: String): String {
+    fun solve(vararg board: String): List<String> {
 
-        return move('W', board) + move('G', board)
+        return listOf(move('W', board) + move('G', board))
     }
 
     private fun move(bunny: Char, board: Array<out String>): String {

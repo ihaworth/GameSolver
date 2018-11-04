@@ -1,4 +1,4 @@
-import org.hamcrest.CoreMatchers.equalTo
+import org.hamcrest.CoreMatchers.hasItem
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
 
@@ -14,7 +14,7 @@ class SingleRabbitAlreadyInHolesTest {
                 "     ",
                 "     ",
                 "     ",
-                "     "), equalTo(""))
+                "     "), hasItem(""))
     }
 
     @Test
@@ -25,7 +25,7 @@ class SingleRabbitAlreadyInHolesTest {
                 "     ",
                 "     ",
                 "     ",
-                "     "), equalTo(""))
+                "     "), hasItem(""))
     }
 
     @Test
@@ -36,7 +36,7 @@ class SingleRabbitAlreadyInHolesTest {
                 "     ",
                 "     ",
                 "     ",
-                "W    "), equalTo(""))
+                "W    "), hasItem(""))
     }
 
     @Test
@@ -47,7 +47,7 @@ class SingleRabbitAlreadyInHolesTest {
                 "     ",
                 "     ",
                 "     ",
-                "    W"), equalTo(""))
+                "    W"), hasItem(""))
     }
 
     @Test
@@ -58,7 +58,7 @@ class SingleRabbitAlreadyInHolesTest {
                 "     ",
                 "  W  ",
                 "     ",
-                "     "), equalTo(""))
+                "     "), hasItem(""))
     }
 
 }

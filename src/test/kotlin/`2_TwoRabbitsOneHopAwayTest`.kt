@@ -1,4 +1,4 @@
-import org.hamcrest.CoreMatchers.equalTo
+import org.hamcrest.CoreMatchers.hasItem
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
 
@@ -12,7 +12,7 @@ class TwoRabbitsOneHopAwayTest {
                                 "     ",
                                 "    G",
                                 "    M",
-                                "     "), equalTo("W(W)G(S)"))
+                                "     "), hasItem("W(W)G(S)"))
     }
 
 }

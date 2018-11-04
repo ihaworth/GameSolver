@@ -1,4 +1,4 @@
-import org.hamcrest.CoreMatchers.equalTo
+import org.hamcrest.CoreMatchers.hasItem
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
 
@@ -12,7 +12,7 @@ class SingleRabbitOneHopAwayTest {
                                 "     ",
                                 "     ",
                                 "     ",
-                                "     "), equalTo("W(W)"))
+                                "     "), hasItem("W(W)"))
     }
 
     @Test
@@ -21,7 +21,7 @@ class SingleRabbitOneHopAwayTest {
                                 "M    ",
                                 "W    ",
                                 "     ",
-                                "     "), equalTo("W(N)"))
+                                "     "), hasItem("W(N)"))
     }
 
     @Test
@@ -30,7 +30,7 @@ class SingleRabbitOneHopAwayTest {
                                 "     ",
                                 "     ",
                                 "     ",
-                                "     "), equalTo("W(E)"))
+                                "     "), hasItem("W(E)"))
     }
 
     @Test
@@ -39,7 +39,7 @@ class SingleRabbitOneHopAwayTest {
                                 "    M",
                                 "    W",
                                 "     ",
-                                "     "), equalTo("W(N)"))
+                                "     "), hasItem("W(N)"))
     }
 
     @Test
@@ -48,7 +48,7 @@ class SingleRabbitOneHopAwayTest {
                                 "     ",
                                 "     ",
                                 "     ",
-                                " MW  "), equalTo("W(W)"))
+                                " MW  "), hasItem("W(W)"))
     }
 
     @Test
@@ -57,7 +57,7 @@ class SingleRabbitOneHopAwayTest {
                                 "     ",
                                 "W    ",
                                 "M    ",
-                                "     "), equalTo("W(S)"))
+                                "     "), hasItem("W(S)"))
     }
 
     @Test
@@ -66,7 +66,7 @@ class SingleRabbitOneHopAwayTest {
                                 "     ",
                                 "     ",
                                 "     ",
-                                "  WM "), equalTo("W(E)"))
+                                "  WM "), hasItem("W(E)"))
     }
 
     @Test
@@ -75,7 +75,7 @@ class SingleRabbitOneHopAwayTest {
                                 "     ",
                                 "    W",
                                 "    M",
-                                "     "), equalTo("W(S)"))
+                                "     "), hasItem("W(S)"))
     }
 
     @Test
@@ -84,7 +84,7 @@ class SingleRabbitOneHopAwayTest {
                                 "  M  ",
                                 "     ",
                                 "     ",
-                                "     "), equalTo("W(S)"))
+                                "     "), hasItem("W(S)"))
     }
 
     @Test
@@ -93,7 +93,7 @@ class SingleRabbitOneHopAwayTest {
                                 "     ",
                                 "   MW",
                                 "     ",
-                                "     "), equalTo("W(W)"))
+                                "     "), hasItem("W(W)"))
     }
 
     @Test
@@ -102,7 +102,7 @@ class SingleRabbitOneHopAwayTest {
                                 "     ",
                                 "     ",
                                 "  M  ",
-                                "  W  "), equalTo("W(N)"))
+                                "  W  "), hasItem("W(N)"))
     }
 
     @Test
@@ -111,7 +111,7 @@ class SingleRabbitOneHopAwayTest {
                                 "     ",
                                 "WM   ",
                                 "     ",
-                                "     "), equalTo("W(E)"))
+                                "     "), hasItem("W(E)"))
     }
 
 }
