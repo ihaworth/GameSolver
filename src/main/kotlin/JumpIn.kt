@@ -5,19 +5,13 @@ class JumpIn {
 
         val (rabbitRow, rabbitCol) = locate('W', board)
 
-        if (rabbitCol > 0 && pieceAt( west(Coordinate(rabbitRow, rabbitCol)), board) == 'M') return "W" + "(W)"
-        if (rabbitRow > 0 && pieceAt(north(Coordinate(rabbitRow, rabbitCol)), board) == 'M') return "W" + "(N)"
-        if (rabbitCol < 4 && pieceAt( east(Coordinate(rabbitRow, rabbitCol)), board) == 'M') return "W" + "(E)"
-        if (rabbitRow < 4 && pieceAt(south(Coordinate(rabbitRow, rabbitCol)), board) == 'M') return "W" + "(S)"
+        if (rabbitCol > 0 && pieceAt(Coordinate(rabbitRow, rabbitCol). west(), board) == 'M') return "W" + "(W)"
+        if (rabbitRow > 0 && pieceAt(Coordinate(rabbitRow, rabbitCol).north(), board) == 'M') return "W" + "(N)"
+        if (rabbitCol < 4 && pieceAt(Coordinate(rabbitRow, rabbitCol). east(), board) == 'M') return "W" + "(E)"
+        if (rabbitRow < 4 && pieceAt(Coordinate(rabbitRow, rabbitCol).south(), board) == 'M') return "W" + "(S)"
 
         return ""
     }
-
-    private fun  west(coordinate: Coordinate) = Coordinate(coordinate.row    , coordinate.col - 1)
-    private fun north(coordinate: Coordinate) = Coordinate(coordinate.row - 1, coordinate.col    )
-    private fun  east(coordinate: Coordinate) = Coordinate(coordinate.row    , coordinate.col + 1)
-    private fun south(coordinate: Coordinate) = Coordinate(coordinate.row + 1, coordinate.col    )
-
 
     private fun pieceAt(coord: Coordinate, board: Array<out String>): Char {
         return board[coord.row][coord.col]
@@ -42,4 +36,9 @@ class JumpIn {
 
 class Coordinate(val row: Int, val col: Int) {
     constructor(pair: Pair<Int, Int>) : this(pair.first, pair.second)
+
+    fun  west() = Coordinate(row    , col - 1)
+    fun north() = Coordinate(row - 1, col    )
+    fun  east() = Coordinate(row    , col + 1)
+    fun south() = Coordinate(row + 1, col    )
 }
