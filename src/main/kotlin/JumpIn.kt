@@ -33,10 +33,14 @@ class JumpIn {
 }
 
 class Coordinate(val row: Int, val col: Int) {
-    fun  west() = if (col == 0) null else Coordinate(row    , col - 1)
-    fun north() = if (row == 0) null else Coordinate(row - 1, col    )
-    fun  east() = if (col == 4) null else Coordinate(row    , col + 1)
-    fun south() = if (row == 4) null else Coordinate(row + 1, col    )
+    fun  west() = if (col == 0) null else plus( 0,-1)
+    fun north() = if (row == 0) null else plus(-1, 0)
+    fun  east() = if (col == 4) null else plus( 0, 1)
+    fun south() = if (row == 4) null else plus( 1, 0)
+
+    private fun plus(rowDelta: Int, colDelta: Int): Coordinate {
+        return Coordinate(row + rowDelta, col + colDelta)
+    }
 
     fun pieceAt(board: Array<out String>) = board[row][col]
 }
