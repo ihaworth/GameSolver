@@ -12,7 +12,7 @@ class JumpIn {
     }
 
     private fun move(bunny: Char, board: Array<out String>): String {
-        val rabbit = locate(bunny, Board(board))
+        val rabbit = Board(board).locate(bunny)
 
         if (pieceAt(rabbit?. west(), board) == 'M') return bunny + "(" + "W" + ")"
         if (pieceAt(rabbit?.north(), board) == 'M') return bunny + "(" + "N" + ")"
@@ -26,18 +26,17 @@ class JumpIn {
         return coord?.pieceAt(board)
     }
 
-    private fun locate(piece: Char, board: Board): Coordinate? {
+}
+
+class Board(val board: Array<out String>) {
+    fun locate(piece: Char): Coordinate? {
         for (row in 0..4)
             for (col in 0..4)
-                if (board.board[row][col] == piece) {
+                if (this.board[row][col] == piece) {
                     return Coordinate(row, col)
                 }
         return null
     }
-}
-
-class Board(val board: Array<out String>) {
-
 }
 
 class Coordinate(val row: Int, val col: Int) {
