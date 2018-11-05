@@ -43,10 +43,16 @@ class Board(val board: Array<out String>) {
 }
 
 class Coordinate(val row: Int, val col: Int) {
-    fun  west() = if (col == 0) null else this + WEST
-    fun north() = if (row == 0) null else this + NORTH
-    fun  east() = if (col == 4) null else this + EAST
-    fun south() = if (row == 4) null else this + SOUTH
+    fun  west() = validate(this + WEST )
+    fun north() = validate(this + NORTH)
+    fun  east() = validate(this + EAST )
+    fun south() = validate(this + SOUTH)
+
+    private fun validate(coordinate: Coordinate): Coordinate? {
+        if (coordinate.row in 0..4 && coordinate.col in 0..4)
+            return coordinate
+        return null
+    }
 
     operator fun plus(vector: Vector): Coordinate {
         return Coordinate(row + vector.rowDelta, col + vector.colDelta)
