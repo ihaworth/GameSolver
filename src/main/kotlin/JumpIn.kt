@@ -1,4 +1,9 @@
 
+val WEST  = Vector( 0, -1)
+val NORTH = Vector(-1,  0)
+val EAST  = Vector( 0,  1)
+val SOUTH = Vector( 1,  0)
+
 class JumpIn {
 
     fun solve(vararg board: String): List<String> {
@@ -29,16 +34,15 @@ class JumpIn {
                 }
         return null
     }
-
 }
 
 class Coordinate(val row: Int, val col: Int) {
-    fun  west() = if (col == 0) null else plus(Vector( 0, -1))
-    fun north() = if (row == 0) null else plus(Vector(-1,  0))
-    fun  east() = if (col == 4) null else plus(Vector( 0,  1))
-    fun south() = if (row == 4) null else plus(Vector( 1,  0))
+    fun  west() = if (col == 0) null else this + WEST
+    fun north() = if (row == 0) null else this + NORTH
+    fun  east() = if (col == 4) null else this + EAST
+    fun south() = if (row == 4) null else this + SOUTH
 
-    private fun plus(vector: Vector): Coordinate {
+    operator fun plus(vector: Vector): Coordinate {
         return Coordinate(row + vector.rowDelta, col + vector.colDelta)
     }
 
