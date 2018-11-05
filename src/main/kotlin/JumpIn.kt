@@ -14,10 +14,10 @@ class JumpIn {
     private fun move(bunny: Char, board: Array<out String>): String {
         val rabbit = Board(board).locate(bunny)
 
-        if (pieceAt(rabbit?. west(), board) == 'M') return bunny + "(" + "W" + ")"
-        if (pieceAt(rabbit?.north(), board) == 'M') return bunny + "(" + "N" + ")"
-        if (pieceAt(rabbit?. east(), board) == 'M') return bunny + "(" + "E" + ")"
-        if (pieceAt(rabbit?.south(), board) == 'M') return bunny + "(" + "S" + ")"
+        if (pieceAt(rabbit?.validate(rabbit + WEST ), board) == 'M') return bunny + "(" + "W" + ")"
+        if (pieceAt(rabbit?.validate(rabbit + NORTH), board) == 'M') return bunny + "(" + "N" + ")"
+        if (pieceAt(rabbit?.validate(rabbit + EAST ), board) == 'M') return bunny + "(" + "E" + ")"
+        if (pieceAt(rabbit?.validate(rabbit + SOUTH), board) == 'M') return bunny + "(" + "S" + ")"
 
         return ""
     }
@@ -43,12 +43,7 @@ class Board(val board: Array<out String>) {
 }
 
 class Coordinate(val row: Int, val col: Int) {
-    fun  west() = validate(this + WEST )
-    fun north() = validate(this + NORTH)
-    fun  east() = validate(this + EAST )
-    fun south() = validate(this + SOUTH)
-
-    private fun validate(coordinate: Coordinate): Coordinate? {
+    fun validate(coordinate: Coordinate): Coordinate? {
         if (coordinate.row in 0..4 && coordinate.col in 0..4)
             return coordinate
         return null
