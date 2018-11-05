@@ -51,10 +51,10 @@ class Board(val board: Array<out String>) {
     }
 
     fun pieceAt(coord: Coordinate): Char? {
-        return validate(coord)?.let { this.board[it.row][it.col] }
+        return withinBoard(coord)?.let { this.board[it.row][it.col] }
     }
 
-    private fun validate(coord: Coordinate): Coordinate? {
+    private fun withinBoard(coord: Coordinate): Coordinate? {
         return coord.let { if (it.row in 0 until height && it.col in 0 until width) it else null }
     }
 
