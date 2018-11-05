@@ -29,9 +29,12 @@ class JumpIn {
 }
 
 class Board(val board: Array<out String>) {
+    val height = board.size
+    val width  = board.first().length
+
     fun locate(piece: Char): Coordinate? {
-        for (row in 0..4)
-            for (col in 0..4)
+        for (row in 0 until height)
+            for (col in 0 until width)
                 if (this.board[row][col] == piece) {
                     return Coordinate(row, col)
                 }
