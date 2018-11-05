@@ -14,10 +14,12 @@ class JumpIn {
     private fun move(bunny: Char, board: Board): String {
         val rabbit = board.locate(bunny)
 
-        if (board.pieceAt(rabbit?.plus(WEST )) == 'M') return bunny + "(" + "W" + ")"
-        if (board.pieceAt(rabbit?.plus(NORTH)) == 'M') return bunny + "(" + "N" + ")"
-        if (board.pieceAt(rabbit?.plus(EAST )) == 'M') return bunny + "(" + "E" + ")"
-        if (board.pieceAt(rabbit?.plus(SOUTH)) == 'M') return bunny + "(" + "S" + ")"
+        if (rabbit != null) {
+            if (board.pieceAt(rabbit.plus(WEST )) == 'M') return bunny + "(" + "W" + ")"
+            if (board.pieceAt(rabbit.plus(NORTH)) == 'M') return bunny + "(" + "N" + ")"
+            if (board.pieceAt(rabbit.plus(EAST )) == 'M') return bunny + "(" + "E" + ")"
+            if (board.pieceAt(rabbit.plus(SOUTH)) == 'M') return bunny + "(" + "S" + ")"
+        }
 
         return ""
     }
@@ -37,12 +39,12 @@ class Board(val board: Array<out String>) {
         return null
     }
 
-    fun pieceAt(coord: Coordinate?): Char? {
+    fun pieceAt(coord: Coordinate): Char? {
         return validate(coord)?.let { this.board[it.row][it.col] }
     }
 
-    private fun validate(coord: Coordinate?): Coordinate? {
-        return coord?.let { if (it.row in 0 until height && it.col in 0 until width) it else null }
+    private fun validate(coord: Coordinate): Coordinate? {
+        return coord.let { if (it.row in 0 until height && it.col in 0 until width) it else null }
     }
 
 }
