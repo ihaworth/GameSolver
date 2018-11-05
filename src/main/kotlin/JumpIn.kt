@@ -50,13 +50,10 @@ class Board(val board: Array<out String>) {
         return null
     }
 
-    fun pieceAt(coord: Coordinate): Char? {
-        return withinBoard(coord)?.let { this.board[it.row][it.col] }
-    }
+    fun pieceAt(coord: Coordinate): Char? = if (coord in this) board[coord.row][coord.col] else null
 
-    private fun withinBoard(coord: Coordinate): Coordinate? {
-        return coord.let { if (it.row in 0 until height && it.col in 0 until width) it else null }
-    }
+    operator fun contains(coord: Coordinate) = coord.row in (0 until height) &&
+                                               coord.col in (0 until width)
 
 }
 
