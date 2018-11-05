@@ -14,14 +14,16 @@ class JumpIn {
     private fun move(bunny: Char, board: Board): String {
         val rabbit = board.locate(bunny)
 
+        var move = ""
+
         if (rabbit != null) {
-            if (board.pieceAt(rabbit.plus(WEST )) == 'M') return bunny + "(" + output(WEST ) + ")"
-            if (board.pieceAt(rabbit.plus(NORTH)) == 'M') return bunny + "(" + output(NORTH) + ")"
-            if (board.pieceAt(rabbit.plus(EAST )) == 'M') return bunny + "(" + output(EAST ) + ")"
-            if (board.pieceAt(rabbit.plus(SOUTH)) == 'M') return bunny + "(" + output(SOUTH) + ")"
+            if (board.pieceAt(rabbit.plus(WEST )) == 'M') move += bunny + "(" + output(WEST ) + ")"
+            if (board.pieceAt(rabbit.plus(NORTH)) == 'M') move += bunny + "(" + output(NORTH) + ")"
+            if (board.pieceAt(rabbit.plus(EAST )) == 'M') move += bunny + "(" + output(EAST ) + ")"
+            if (board.pieceAt(rabbit.plus(SOUTH)) == 'M') move += bunny + "(" + output(SOUTH) + ")"
         }
 
-        return ""
+        return move
     }
 
     private fun output(vector: Vector): String {
