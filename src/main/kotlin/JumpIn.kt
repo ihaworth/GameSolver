@@ -22,7 +22,7 @@ class JumpIn {
         return ""
     }
 
-    private fun pieceAt(coord: Coordinate?, board: Array<out String>) = coord?.validate()?.pieceAt(board)
+    private fun pieceAt(coord: Coordinate?, board: Array<out String>) = coord?.validate(Board(board))?.pieceAt(board)
 
 }
 
@@ -41,8 +41,8 @@ class Board(val board: Array<out String>) {
 }
 
 class Coordinate(val row: Int, val col: Int) {
-    fun validate(): Coordinate? {
-        if (row in 0..4 && col in 0..4)
+    fun validate(board: Board): Coordinate? {
+        if (row in 0 until board.height && col in 0 until board.width)
             return this
         return null
     }
