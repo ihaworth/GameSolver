@@ -17,10 +17,9 @@ class JumpIn {
         var move = ""
 
         if (rabbit != null) {
-            if (board.pieceAt(rabbit.plus(WEST )) == 'M') move += bunny + "(" + output(WEST ) + ")"
-            if (board.pieceAt(rabbit.plus(NORTH)) == 'M') move += bunny + "(" + output(NORTH) + ")"
-            if (board.pieceAt(rabbit.plus(EAST )) == 'M') move += bunny + "(" + output(EAST ) + ")"
-            if (board.pieceAt(rabbit.plus(SOUTH)) == 'M') move += bunny + "(" + output(SOUTH) + ")"
+            listOf(WEST, NORTH, EAST, SOUTH).forEach {dir ->
+                if (board.pieceAt(rabbit.plus(dir)) == 'M') move += bunny + "(" + output(dir) + ")"
+            }
         }
 
         return move
