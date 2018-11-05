@@ -9,10 +9,10 @@ class JumpIn {
     private fun move(bunny: Char, board: Array<out String>): String {
         val rabbit = locate(bunny, board)
 
-        if (pieceAt(rabbit?. west(), board) == 'M') return bunny + "(W)"
-        if (pieceAt(rabbit?.north(), board) == 'M') return bunny + "(N)"
-        if (pieceAt(rabbit?. east(), board) == 'M') return bunny + "(E)"
-        if (pieceAt(rabbit?.south(), board) == 'M') return bunny + "(S)"
+        if (pieceAt(rabbit?. west(), board) == 'M') return bunny + "(" + "W" + ")"
+        if (pieceAt(rabbit?.north(), board) == 'M') return bunny + "(" + "N" + ")"
+        if (pieceAt(rabbit?. east(), board) == 'M') return bunny + "(" + "E" + ")"
+        if (pieceAt(rabbit?.south(), board) == 'M') return bunny + "(" + "S" + ")"
 
         return ""
     }
