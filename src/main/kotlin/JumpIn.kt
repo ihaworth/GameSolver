@@ -15,13 +15,23 @@ class JumpIn {
         val rabbit = board.locate(bunny)
 
         if (rabbit != null) {
-            if (board.pieceAt(rabbit.plus(WEST )) == 'M') return bunny + "(" + "W" + ")"
-            if (board.pieceAt(rabbit.plus(NORTH)) == 'M') return bunny + "(" + "N" + ")"
-            if (board.pieceAt(rabbit.plus(EAST )) == 'M') return bunny + "(" + "E" + ")"
-            if (board.pieceAt(rabbit.plus(SOUTH)) == 'M') return bunny + "(" + "S" + ")"
+            if (board.pieceAt(rabbit.plus(WEST )) == 'M') return bunny + "(" + output(WEST ) + ")"
+            if (board.pieceAt(rabbit.plus(NORTH)) == 'M') return bunny + "(" + output(NORTH) + ")"
+            if (board.pieceAt(rabbit.plus(EAST )) == 'M') return bunny + "(" + output(EAST ) + ")"
+            if (board.pieceAt(rabbit.plus(SOUTH)) == 'M') return bunny + "(" + output(SOUTH) + ")"
         }
 
         return ""
+    }
+
+    private fun output(vector: Vector): String {
+        when (vector) {
+            WEST  -> return "W"
+            NORTH -> return "N"
+            EAST  -> return "E"
+            SOUTH -> return "S"
+            else  -> return ""
+        }
     }
 
 }
