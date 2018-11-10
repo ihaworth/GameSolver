@@ -59,10 +59,8 @@ class Board(val board: Array<out String>) {
 
 class Coordinate(val row: Int, val col: Int) {
 
-    operator fun plus(vector: Vector): Coordinate {
-        return Coordinate(row + vector.rowDelta, col + vector.colDelta)
-    }
-
+    operator fun plus(vector: Vector) = Coordinate(row + vector.rowDelta,
+                                                   col + vector.colDelta)
 }
 
 class Vector(val rowDelta: Int, val colDelta: Int) {}
