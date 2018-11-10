@@ -37,7 +37,7 @@ class JumpIn {
 
 }
 
-class Board(val board: Array<out String>) {
+class Board(private val board: Array<out String>) {
     val height = board.size
     val width  = board.first().length
 
