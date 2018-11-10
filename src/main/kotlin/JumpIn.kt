@@ -6,13 +6,15 @@ val SOUTH = Vector( 1,  0)
 
 class JumpIn {
 
-    fun solve(vararg board: String): List<String> {
+    fun solve(vararg board: String): List<String> = solve(Board(board))
 
-        val board1 = Board(board)
+    private fun solve(board: Board): List<String> {
+
         return listOf(
-                (board1.locate('W')?.let { move(board1, it, 'W') } ?: "") +
-                (board1.locate('G')?.let { move(board1, it, 'G') } ?: "") +
-                (board1.locate('B')?.let { move(board1, it, 'B') } ?: ""))
+                listOf(Pair('W', board.locate('W')),
+                       Pair('G', board.locate('G')),
+                       Pair('B', board.locate('B'))).
+                            fold("") { acc, pair -> acc +(pair.second?.let { move(board, it, pair.first) } ?: "")})
     }
 
     private fun move(board: Board, rabbit: Coordinate, bunny: Char): String {
