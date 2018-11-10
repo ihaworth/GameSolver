@@ -9,12 +9,10 @@ class JumpIn {
     fun solve(vararg board: String): List<String> {
 
         val board1 = Board(board)
-        val board2 = Board(board)
-        val board3 = Board(board)
         return listOf(
                 (board1.locate('W')?.let { move(board1, it, 'W') } ?: "") +
-                (board2.locate('G')?.let { move(board2, it, 'G') } ?: "") +
-                (board3.locate('B')?.let { move(board3, it, 'B') } ?: ""))
+                (board1.locate('G')?.let { move(board1, it, 'G') } ?: "") +
+                (board1.locate('B')?.let { move(board1, it, 'B') } ?: ""))
     }
 
     private fun move(board: Board, rabbit: Coordinate, bunny: Char): String {
