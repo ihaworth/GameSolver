@@ -15,4 +15,13 @@ class TwoRabbitsOneHopAwayTest {
                                 "     "), hasItem("W(W)G(S)"))
     }
 
+    @Test
+    fun twoOtherRabbitsToMakeSingleJumps() {
+        assertThat(jumpIn.solve(" MG  ",
+                                "     ",
+                                "    B",
+                                "    M",
+                                "     "), hasItem("G(W)B(S)"))
+    }
+
 }

@@ -8,7 +8,7 @@ class JumpIn {
 
     fun solve(vararg board: String): List<String> {
 
-        return listOf(move('W', Board(board)) + move('G', Board(board)))
+        return listOf(move('W', Board(board)) + move('G', Board(board)) + move('B', Board(board)))
     }
 
     private fun move(bunny: Char, board: Board): String {
