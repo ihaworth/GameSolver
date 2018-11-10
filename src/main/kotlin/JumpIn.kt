@@ -11,10 +11,9 @@ class JumpIn {
     private fun solve(board: Board): List<String> {
 
         return listOf(
-                listOf(Pair('W', board.locate('W')),
-                       Pair('G', board.locate('G')),
-                       Pair('B', board.locate('B'))).
-                            fold("") { acc, pair -> acc +(pair.second?.let { move(board, it, pair.first) } ?: "")})
+                listOf('W', 'G', 'B').
+                map { bunny -> Pair(bunny, board.locate(bunny)) }.
+                fold("") { acc, pair -> acc +(pair.second?.let { move(board, it, pair.first) } ?: "")})
     }
 
     private fun move(board: Board, rabbit: Coordinate, bunny: Char): String {
