@@ -34,4 +34,13 @@ class SingleRabbit_AlreadyInHole_ShouldNotMoveTest {
                                 "WM   "), hasItem(""))
     }
 
+    @Test
+    fun stayInSEHoleRatherThanJumping() {
+        assertThat(jumpIn.solve("     ",
+                                "     ",
+                                "     ",
+                                "     ",
+                                "   MW"), hasItem(""))
+    }
+
 }
