@@ -20,11 +20,10 @@ class JumpIn {
                 mapNotNull { bunny -> board.locate(bunny)?.let { Pair(bunny, it) } }
     }
 
-    private fun move(board: Board, rabbit: Coordinate, bunny: Char): String {
+    private fun move(board: Board, position: Coordinate, bunny: Char): String {
         var move = ""
-        listOf(WEST, NORTH, EAST, SOUTH).forEach { dir ->
-            if (board.pieceAt(rabbit.plus(dir)) == 'M') move += bunny + "(" + output(dir) + ")"
-        }
+        listOf(WEST, NORTH, EAST, SOUTH).
+                forEach { if (board.pieceAt(position.plus(it)) == 'M') move += bunny + "(" + output(it) + ")" }
         return move
     }
 
