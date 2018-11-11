@@ -22,6 +22,8 @@ class JumpIn {
 
     private fun move(board: Board, position: Coordinate, bunny: Char): String {
         var move = ""
+        if (position == Coordinate(0, 0))
+            return ""
         listOf(WEST, NORTH, EAST, SOUTH).
                 forEach { if (board.pieceAt(position.plus(it)) == 'M') move += bunny + "(" + output(it) + ")" }
         return move
@@ -59,7 +61,7 @@ class Board(private val board: Array<out String>) {
 
 }
 
-class Coordinate(val row: Int, val col: Int) {
+data class Coordinate(val row: Int, val col: Int) {
 
     operator fun plus(vector: Vector) = Coordinate(row + vector.rowDelta,
                                                    col + vector.colDelta)
