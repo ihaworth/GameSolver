@@ -22,7 +22,9 @@ class JumpIn {
 
     private fun move(board: Board, position: Coordinate, bunny: Char): String {
         var move = ""
-        if (position == Coordinate(0, 0) || position == Coordinate(0, 4))
+        if (position == Coordinate(0, 0) ||
+            position == Coordinate(0, 4) ||
+            position == Coordinate(4, 0))
             return ""
         listOf(WEST, NORTH, EAST, SOUTH).
                 forEach { if (board.pieceAt(position.plus(it)) == 'M') move += bunny + "(" + output(it) + ")" }
