@@ -14,10 +14,10 @@ class JumpIn {
             rabbit == Coordinate(max_ordinate / 2, max_ordinate / 2))
             return ""
 
-        if (pieceAt(rabbit. west(), board) == 'M') return "W" + "(W)"
-        if (pieceAt(rabbit.north(), board) == 'M') return "W" + "(N)"
-        if (pieceAt(rabbit. east(), board) == 'M') return "W" + "(E)"
-        if (pieceAt(rabbit.south(), board) == 'M') return "W" + "(S)"
+        if (pieceAt(rabbit. west(board), board) == 'M') return "W" + "(W)"
+        if (pieceAt(rabbit.north(board), board) == 'M') return "W" + "(N)"
+        if (pieceAt(rabbit. east(board), board) == 'M') return "W" + "(E)"
+        if (pieceAt(rabbit.south(board), board) == 'M') return "W" + "(S)"
 
         return ""
     }
@@ -47,8 +47,8 @@ class JumpIn {
 }
 
 data class Coordinate(val row: Int, val col: Int) {
-    fun  west() = if (col == 0) null else Coordinate(row    , col - 1)
-    fun north() = if (row == 0) null else Coordinate(row - 1, col    )
-    fun  east() = if (col == 4) null else Coordinate(row    , col + 1)
-    fun south() = if (row == 4) null else Coordinate(row + 1, col    )
+    fun  west(board: Array<out String>) = if (col == 0             ) null else Coordinate(row    , col - 1)
+    fun north(board: Array<out String>) = if (row == 0             ) null else Coordinate(row - 1, col    )
+    fun  east(board: Array<out String>) = if (col == board.size - 1) null else Coordinate(row    , col + 1)
+    fun south(board: Array<out String>) = if (row == board.size - 1) null else Coordinate(row + 1, col    )
 }
