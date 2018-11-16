@@ -5,7 +5,8 @@ class JumpIn {
 
         val rabbit = locate('W', board)
 
-        if (rabbit == Coordinate(0, 0))
+        if (rabbit == Coordinate(0, 0) ||
+            rabbit == Coordinate(0, 4))
             return ""
 
         if (pieceAt(rabbit. west(), board) == 'M') return "W" + "(W)"
