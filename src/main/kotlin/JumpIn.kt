@@ -7,7 +7,8 @@ class JumpIn {
 
         if (rabbit == Coordinate(0, 0) ||
             rabbit == Coordinate(0, 4) ||
-            rabbit == Coordinate(4, 0))
+            rabbit == Coordinate(4, 0) ||
+            rabbit == Coordinate(4, 4))
             return ""
 
         if (pieceAt(rabbit. west(), board) == 'M') return "W" + "(W)"
