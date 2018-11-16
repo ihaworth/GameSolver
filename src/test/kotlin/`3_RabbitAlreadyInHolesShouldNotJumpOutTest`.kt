@@ -50,4 +50,26 @@ class SingleRabbitAlreadyInHolesShouldNotJumpOutTest {
                 "     "), equalTo(""))
     }
 
+    @Test
+    fun alreadyInBottomLeftHoleShouldNotJumpEast() {
+        assertThat(jumpIn.solve(
+
+                "     ",
+                "     ",
+                "     ",
+                "     ",
+                "WM   "), equalTo(""))
+    }
+
+    @Test
+    fun alreadyInBottomLeftHoleShouldNotJumpNorth() {
+        assertThat(jumpIn.solve(
+
+                "     ",
+                "     ",
+                "     ",
+                "M    ",
+                "W    "), equalTo(""))
+    }
+
 }
