@@ -2,7 +2,14 @@ class JumpIn {
 
     fun solve(vararg board: String): String {
 
-        val rabbit = locate('W', board)
+        val move = solve(board, 'W')
+
+        return if (move.isEmpty()) "" else "W($move)"
+    }
+
+    private fun solve(board: Array<out String>, bunny: Char): String {
+
+        val rabbit = locate(bunny, board)
 
         val max_ordinate = board.size - 1
         val min_ordinate = 0
@@ -14,10 +21,10 @@ class JumpIn {
             rabbit == Coordinate(max_ordinate / 2, max_ordinate / 2))
             return ""
 
-        if (pieceAt(rabbit. west(board), board) == 'M') return "W" + "(W)"
-        if (pieceAt(rabbit.north(board), board) == 'M') return "W" + "(N)"
-        if (pieceAt(rabbit. east(board), board) == 'M') return "W" + "(E)"
-        if (pieceAt(rabbit.south(board), board) == 'M') return "W" + "(S)"
+        if (pieceAt(rabbit. west(board), board) == 'M') return "W"
+        if (pieceAt(rabbit.north(board), board) == 'M') return "N"
+        if (pieceAt(rabbit. east(board), board) == 'M') return "E"
+        if (pieceAt(rabbit.south(board), board) == 'M') return "S"
 
         return ""
     }
