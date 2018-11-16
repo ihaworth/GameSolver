@@ -94,4 +94,16 @@ class SingleRabbitAlreadyInHolesShouldNotJumpOutTest {
                 "    W"), equalTo(""))
     }
 
+
+    @Test
+    fun alreadyInCentralHoleShouldNotJumpOut() {
+        assertThat(jumpIn.solve(
+
+                "     ",
+                "  M  ",
+                " MWM ",
+                "  M  ",
+                "     "), equalTo(""))
+    }
+
 }
