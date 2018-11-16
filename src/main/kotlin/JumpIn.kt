@@ -5,6 +5,9 @@ class JumpIn {
 
         val rabbit = locate('W', board)
 
+        if (rabbit == Coordinate(0, 0))
+            return ""
+
         if (pieceAt(rabbit. west(), board) == 'M') return "W" + "(W)"
         if (pieceAt(rabbit.north(), board) == 'M') return "W" + "(N)"
         if (pieceAt(rabbit. east(), board) == 'M') return "W" + "(E)"
@@ -35,7 +38,7 @@ class JumpIn {
 
 }
 
-class Coordinate(val row: Int, val col: Int) {
+data class Coordinate(val row: Int, val col: Int) {
     fun  west() = if (col == 0) null else Coordinate(row    , col - 1)
     fun north() = if (row == 0) null else Coordinate(row - 1, col    )
     fun  east() = if (col == 4) null else Coordinate(row    , col + 1)
