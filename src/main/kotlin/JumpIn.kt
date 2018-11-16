@@ -32,8 +32,10 @@ class JumpIn {
         var rabbitRow = -1
         var rabbitCol = -1
 
-        for (row in 0..4)
-            for (col in 0..4)
+        val max_ordinate = board.size - 1
+
+        for (row in 0..max_ordinate)
+            for (col in 0..max_ordinate)
                 if (board[row][col] == piece) {
                     rabbitRow = row
                     rabbitCol = col
