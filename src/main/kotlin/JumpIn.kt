@@ -54,8 +54,10 @@ class JumpIn {
 }
 
 data class Coordinate(val row: Int, val col: Int) {
-    fun  west(board: Array<out String>) = if (col == 0             ) null else Coordinate(row    , col - 1)
-    fun north(board: Array<out String>) = if (row == 0             ) null else Coordinate(row - 1, col    )
-    fun  east(board: Array<out String>) = if (col == board.size - 1) null else Coordinate(row    , col + 1)
-    fun south(board: Array<out String>) = if (row == board.size - 1) null else Coordinate(row + 1, col    )
+    fun  west(board: Array<out String>) = if (col == 0             ) null else plus( 0, -1)
+    fun north(board: Array<out String>) = if (row == 0             ) null else plus(-1,  0)
+    fun  east(board: Array<out String>) = if (col == board.size - 1) null else plus( 0,  1)
+    fun south(board: Array<out String>) = if (row == board.size - 1) null else plus( 1,  0)
+
+    private fun plus(rowDelta: Int, colDelta: Int) = Coordinate(row + rowDelta, col + colDelta)
 }
