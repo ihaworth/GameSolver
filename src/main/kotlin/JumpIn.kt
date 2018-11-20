@@ -2,35 +2,25 @@ class JumpIn {
 
     fun solve(vararg board: String): String {
 
-        val move = solve(board, 'W')
+        val move = solve('W', Board(board))
 
         return if (move.isEmpty()) "" else "W($move)"
     }
 
-    private fun solve(board: Array<out String>, bunny: Char): String {
+    private fun solve(bunny: Char, board: Board): String {
 
-        val rabbit = Board(board).locate(bunny)
+        val rabbit = board.locate(bunny)
 
-        val max_ordinate = board.size - 1
-        val min_ordinate = 0
-
-        if (rabbit == Coordinate(min_ordinate    , min_ordinate    ) ||
-            rabbit == Coordinate(min_ordinate    , max_ordinate    ) ||
-            rabbit == Coordinate(max_ordinate    , min_ordinate    ) ||
-            rabbit == Coordinate(max_ordinate    , max_ordinate    ) ||
-            rabbit == Coordinate(max_ordinate / 2, max_ordinate / 2))
+        if (board.inHole(rabbit))
             return ""
 
-        val board1 = Board(board)
-        if (board1.pieceAt1(rabbit.plus( west)) == 'M') return "W"
-        if (board1.pieceAt1(rabbit.plus(north)) == 'M') return "N"
-        if (board1.pieceAt1(rabbit.plus( east)) == 'M') return "E"
-        if (board1.pieceAt1(rabbit.plus(south)) == 'M') return "S"
+        if (board.pieceAt1(rabbit.plus( west)) == 'M') return "W"
+        if (board.pieceAt1(rabbit.plus(north)) == 'M') return "N"
+        if (board.pieceAt1(rabbit.plus( east)) == 'M') return "E"
+        if (board.pieceAt1(rabbit.plus(south)) == 'M') return "S"
 
         return ""
     }
-
-
 }
 
 val  west = Vector( 0, -1)
@@ -67,6 +57,18 @@ class Board(val board: Array<out String>) {
                 }
         return Coordinate(rabbitRow, rabbitCol)
     }
+
+    fun inHole(rabbit: Coordinate): Boolean {
+        val maxOrdinate = board.size - 1
+        val minOrdinate = 0
+
+        return rabbit == Coordinate(minOrdinate    , minOrdinate    ) ||
+               rabbit == Coordinate(minOrdinate    , maxOrdinate    ) ||
+               rabbit == Coordinate(maxOrdinate    , minOrdinate    ) ||
+               rabbit == Coordinate(maxOrdinate    , maxOrdinate    ) ||
+               rabbit == Coordinate(maxOrdinate / 2, maxOrdinate / 2)
+    }
+
 }
 
 data class Coordinate(val row: Int, val col: Int) {
