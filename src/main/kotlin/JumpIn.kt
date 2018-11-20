@@ -67,8 +67,8 @@ class Board(private val board: Array<out String>) {
 }
 
 data class Coordinate(val row: Int, val col: Int) {
-    fun plus(vector: Vector) = Coordinate(row + vector.rowDelta, col + vector.colDelta)
+    fun plus(vector: Vector) = Coordinate(row + vector.rowDelta,
+                                          col + vector.colDelta)
 }
 
-data class Vector(val rowDelta: Int, val colDelta: Int) {
-}
+data class Vector(val rowDelta: Int, val colDelta: Int)
