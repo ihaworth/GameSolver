@@ -14,10 +14,10 @@ class JumpIn {
         if (board.inHole(rabbit))
             return ""
 
-        if (board.pieceAt1(rabbit.plus( west)) == 'M') return "W"
-        if (board.pieceAt1(rabbit.plus(north)) == 'M') return "N"
-        if (board.pieceAt1(rabbit.plus( east)) == 'M') return "E"
-        if (board.pieceAt1(rabbit.plus(south)) == 'M') return "S"
+        if (board.pieceAt(rabbit.plus( west)) == 'M') return "W"
+        if (board.pieceAt(rabbit.plus(north)) == 'M') return "N"
+        if (board.pieceAt(rabbit.plus( east)) == 'M') return "E"
+        if (board.pieceAt(rabbit.plus(south)) == 'M') return "S"
 
         return ""
     }
@@ -30,13 +30,8 @@ val south = Vector( 1,  0)
 
 class Board(val board: Array<out String>) {
 
-    fun pieceAt1(coordinate: Coordinate) = pieceAt(limitToBoard(coordinate))
-
-    fun pieceAt(coord: Coordinate?) =
-            coord?.let { board[it.row][it.col] }
-
-    fun limitToBoard(coordinate: Coordinate): Coordinate? =
-            if (coordinate !in this) null else coordinate
+    fun pieceAt(coordinate: Coordinate) =
+            if (coordinate !in this) null else board[coordinate.row][coordinate.col]
 
     operator fun contains(coordinate: Coordinate) =
             coordinate.row in 0 until board.size &&
