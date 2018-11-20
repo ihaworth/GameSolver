@@ -37,14 +37,14 @@ class Board(private val board: Array<out String>) {
             coordinate.row in 0 until board.size &&
             coordinate.col in 0 until board.size
 
+    private val maxOrdinate = board.size - 1
+
     fun locate(piece: Char): Coordinate {
         var rabbitRow = -1
         var rabbitCol = -1
 
-        val max_ordinate = board.size - 1
-
-        for (row in 0..max_ordinate)
-            for (col in 0..max_ordinate)
+        for (row in 0..maxOrdinate)
+            for (col in 0..maxOrdinate)
                 if (board[row][col] == piece) {
                     rabbitRow = row
                     rabbitCol = col
@@ -54,12 +54,9 @@ class Board(private val board: Array<out String>) {
     }
 
     fun inHole(rabbit: Coordinate): Boolean {
-        val maxOrdinate = board.size - 1
-        val minOrdinate = 0
-
-        return rabbit == Coordinate(minOrdinate    , minOrdinate    ) ||
-               rabbit == Coordinate(minOrdinate    , maxOrdinate    ) ||
-               rabbit == Coordinate(maxOrdinate    , minOrdinate    ) ||
+        return rabbit == Coordinate(0              , 0              ) ||
+               rabbit == Coordinate(0              , maxOrdinate    ) ||
+               rabbit == Coordinate(maxOrdinate    , 0              ) ||
                rabbit == Coordinate(maxOrdinate    , maxOrdinate    ) ||
                rabbit == Coordinate(maxOrdinate / 2, maxOrdinate / 2)
     }
