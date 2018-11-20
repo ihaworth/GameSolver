@@ -28,7 +28,7 @@ val north = Vector(-1,  0)
 val  east = Vector( 0,  1)
 val south = Vector( 1,  0)
 
-class Board(val board: Array<out String>) {
+class Board(private val board: Array<out String>) {
 
     fun pieceAt(coordinate: Coordinate) =
             if (coordinate !in this) null else board[coordinate.row][coordinate.col]
