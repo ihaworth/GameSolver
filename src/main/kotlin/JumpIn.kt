@@ -9,7 +9,7 @@ class JumpIn {
 
     private fun solve(board: Array<out String>, bunny: Char): String {
 
-        val rabbit = locate(bunny, board)
+        val rabbit = Board(board).locate(bunny)
 
         val max_ordinate = board.size - 1
         val min_ordinate = 0
@@ -31,22 +31,6 @@ class JumpIn {
     }
 
 
-    private fun locate(piece: Char, board: Array<out String>): Coordinate {
-        var rabbitRow = -1
-        var rabbitCol = -1
-
-        val max_ordinate = board.size - 1
-
-        for (row in 0..max_ordinate)
-            for (col in 0..max_ordinate)
-                if (board[row][col] == piece) {
-                    rabbitRow = row
-                    rabbitCol = col
-                    break
-                }
-        return Coordinate(rabbitRow, rabbitCol)
-    }
-
 }
 
 val  west = Vector( 0, -1)
@@ -67,6 +51,22 @@ class Board(val board: Array<out String>) {
     operator fun contains(coordinate: Coordinate) =
             coordinate.row in 0 until board.size &&
             coordinate.col in 0 until board.size
+
+    fun locate(piece: Char): Coordinate {
+        var rabbitRow = -1
+        var rabbitCol = -1
+
+        val max_ordinate = board.size - 1
+
+        for (row in 0..max_ordinate)
+            for (col in 0..max_ordinate)
+                if (board[row][col] == piece) {
+                    rabbitRow = row
+                    rabbitCol = col
+                    break
+                }
+        return Coordinate(rabbitRow, rabbitCol)
+    }
 }
 
 data class Coordinate(val row: Int, val col: Int) {
