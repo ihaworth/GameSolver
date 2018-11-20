@@ -29,10 +29,8 @@ class JumpIn {
         return ""
     }
 
-    private fun pieceAt(coord: Coordinate?, board: Array<out String>): Char? {
-        if (coord == null) return null
-        return board[coord.row][coord.col]
-    }
+    private fun pieceAt(coord: Coordinate?, board: Array<out String>) =
+            coord?.let { board[it.row][it.col] }
 
 
     private fun locate(piece: Char, board: Array<out String>): Coordinate {
