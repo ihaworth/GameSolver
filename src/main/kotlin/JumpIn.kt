@@ -21,10 +21,10 @@ class JumpIn {
             rabbit == Coordinate(max_ordinate / 2, max_ordinate / 2))
             return ""
 
-        if (pieceAt(rabbit. west(board), board) == 'M') return "W"
-        if (pieceAt(rabbit.north(board), board) == 'M') return "N"
-        if (pieceAt(rabbit. east(board), board) == 'M') return "E"
-        if (pieceAt(rabbit.south(board), board) == 'M') return "S"
+        if (pieceAt(rabbit.limitToBoard(rabbit.plus( west), board), board) == 'M') return "W"
+        if (pieceAt(rabbit.limitToBoard(rabbit.plus(north), board), board) == 'M') return "N"
+        if (pieceAt(rabbit.limitToBoard(rabbit.plus( east), board), board) == 'M') return "E"
+        if (pieceAt(rabbit.limitToBoard(rabbit.plus(south), board), board) == 'M') return "S"
 
         return ""
     }
@@ -59,12 +59,8 @@ val  east = Vector( 0,  1)
 val south = Vector( 1,  0)
 
 data class Coordinate(val row: Int, val col: Int) {
-    fun  west(board: Array<out String>) = limitToBoard(plus( west), board)
-    fun north(board: Array<out String>) = limitToBoard(plus(north), board)
-    fun  east(board: Array<out String>) = limitToBoard(plus( east), board)
-    fun south(board: Array<out String>) = limitToBoard(plus(south), board)
 
-    private fun limitToBoard(coordinate: Coordinate, board: Array<out String>): Coordinate? =
+    fun limitToBoard(coordinate: Coordinate, board: Array<out String>): Coordinate? =
             if (!insideBoard(coordinate, board)) null else coordinate
 
     fun plus(vector: Vector): Coordinate = Coordinate(row + vector.rowDelta, col + vector.colDelta)
