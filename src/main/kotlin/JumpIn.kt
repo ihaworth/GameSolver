@@ -59,11 +59,11 @@ val  east = Vector( 0,  1)
 val south = Vector( 1,  0)
 
 fun limitToBoard(coordinate: Coordinate, board: Array<out String>): Coordinate? =
-        if (!Board(board).contains(coordinate)) null else coordinate
+        if (coordinate !in Board(board)) null else coordinate
 
 class Board(private val board: Array<out String>) {
 
-    fun contains(coordinate: Coordinate) =
+    operator fun contains(coordinate: Coordinate) =
             coordinate.row in 0 until board.size &&
             coordinate.col in 0 until board.size
 }
