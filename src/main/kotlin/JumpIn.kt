@@ -66,7 +66,7 @@ fun insideBoard(coordinate: Coordinate, board: Array<out String>) =
         coordinate.col in 0 until board.size
 
 data class Coordinate(val row: Int, val col: Int) {
-    fun plus(vector: Vector): Coordinate = Coordinate(row + vector.rowDelta, col + vector.colDelta)
+    fun plus(vector: Vector) = Coordinate(row + vector.rowDelta, col + vector.colDelta)
 }
 
 data class Vector(val rowDelta: Int, val colDelta: Int) {
