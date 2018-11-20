@@ -21,16 +21,14 @@ class JumpIn {
             rabbit == Coordinate(max_ordinate / 2, max_ordinate / 2))
             return ""
 
-        if (pieceAt(limitToBoard(rabbit.plus( west), Board(board)), board) == 'M') return "W"
-        if (pieceAt(limitToBoard(rabbit.plus(north), Board(board)), board) == 'M') return "N"
-        if (pieceAt(limitToBoard(rabbit.plus( east), Board(board)), board) == 'M') return "E"
-        if (pieceAt(limitToBoard(rabbit.plus(south), Board(board)), board) == 'M') return "S"
+        val board1 = Board(board)
+        if (board1.pieceAt1(rabbit.plus( west)) == 'M') return "W"
+        if (board1.pieceAt1(rabbit.plus(north)) == 'M') return "N"
+        if (board1.pieceAt1(rabbit.plus( east)) == 'M') return "E"
+        if (board1.pieceAt1(rabbit.plus(south)) == 'M') return "S"
 
         return ""
     }
-
-    private fun pieceAt(coord: Coordinate?, board: Array<out String>) =
-            coord?.let { board[it.row][it.col] }
 
 
     private fun locate(piece: Char, board: Array<out String>): Coordinate {
@@ -56,10 +54,15 @@ val north = Vector(-1,  0)
 val  east = Vector( 0,  1)
 val south = Vector( 1,  0)
 
-fun limitToBoard(coordinate: Coordinate, board: Board): Coordinate? =
-        if (coordinate !in board) null else coordinate
+class Board(val board: Array<out String>) {
 
-class Board(private val board: Array<out String>) {
+    fun pieceAt1(coordinate: Coordinate) = pieceAt(limitToBoard(coordinate))
+
+    fun pieceAt(coord: Coordinate?) =
+            coord?.let { board[it.row][it.col] }
+
+    fun limitToBoard(coordinate: Coordinate): Coordinate? =
+            if (coordinate !in this) null else coordinate
 
     operator fun contains(coordinate: Coordinate) =
             coordinate.row in 0 until board.size &&
