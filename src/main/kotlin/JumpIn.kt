@@ -59,9 +59,7 @@ data class Coordinate(val row: Int, val col: Int) {
     fun  east(board: Array<out String>) = if (col == board.size - 1) null else plus(Vector( 0,  1))
     fun south(board: Array<out String>) = if (row == board.size - 1) null else plus(Vector( 1,  0))
 
-    private fun plus(vector: Vector): Coordinate {
-        return Coordinate(row + vector.rowDelta, col + vector.colDelta)
-    }
+    private fun plus(vector: Vector): Coordinate = Coordinate(row + vector.rowDelta, col + vector.colDelta)
 }
 
 data class Vector(val rowDelta: Int, val colDelta: Int) {
