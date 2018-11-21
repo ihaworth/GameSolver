@@ -2,7 +2,7 @@ class JumpIn {
 
     fun solve(vararg board: String): String {
 
-        val move = solve('W', Board(board))
+        val move = solve('W', Board(board as Array<String>))
 
         return if (move.isEmpty()) "" else "W($move)"
     }
@@ -15,7 +15,8 @@ class JumpIn {
             return ""
 
         listOf(west, north, east, south).forEach { dir ->
-            if (board.pieceAt(rabbit.plus(dir)) == 'M') return toText(dir)
+            if (board.pieceAt(rabbit.plus(dir)) == 'M')
+                return toText(dir) + solve(bunny, board.move(bunny, dir + dir))
         }
 
         return ""
@@ -36,7 +37,7 @@ val north = Vector(-1,  0)
 val  east = Vector( 0,  1)
 val south = Vector( 1,  0)
 
-class Board(private val board: Array<out String>) {
+class Board(private val board: Array<String>) {
 
     fun pieceAt(coordinate: Coordinate) =
             if (coordinate !in this) null else board[coordinate.row][coordinate.col]
@@ -68,11 +69,27 @@ class Board(private val board: Array<out String>) {
                               Coordinate(maxOrdinate / 2, maxOrdinate / 2))
 
     fun inHole(coord: Coordinate) = coord in holes
+
+    fun move(bunny: Char, dir: Vector): Board {
+        val oldPosition = locate(bunny)
+        val newPosition = oldPosition + dir
+
+        val newBoard = board.clone()
+        newBoard[oldPosition.row] = newBoard[oldPosition.row].replaceRange(oldPosition.col, oldPosition.col + 1, " ")
+        newBoard[newPosition.row] = newBoard[newPosition.row].replaceRange(newPosition.col, newPosition.col + 1, "${bunny}")
+
+        return Board(newBoard)
+    }
 }
 
 data class Coordinate(val row: Int, val col: Int) {
-    fun plus(vector: Vector) = Coordinate(row + vector.rowDelta,
-                                          col + vector.colDelta)
+    operator fun plus(vector: Vector) =
+            Coordinate(row + vector.rowDelta,
+                       col + vector.colDelta)
 }
 
-data class Vector(val rowDelta: Int, val colDelta: Int)
+data class Vector(val rowDelta: Int, val colDelta: Int) {
+    operator fun plus(dir: Vector) =
+            Vector(this.rowDelta + dir.rowDelta,
+                   this.colDelta + dir.colDelta)
+}
