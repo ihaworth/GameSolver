@@ -53,14 +53,13 @@ class Board(private val board: Array<out String>) {
         return Coordinate(rabbitRow, rabbitCol)
     }
 
-    fun inHole(rabbit: Coordinate): Boolean {
-        return rabbit == Coordinate(0              , 0              ) ||
-               rabbit == Coordinate(0              , maxOrdinate    ) ||
-               rabbit == Coordinate(maxOrdinate    , 0              ) ||
-               rabbit == Coordinate(maxOrdinate    , maxOrdinate    ) ||
-               rabbit == Coordinate(maxOrdinate / 2, maxOrdinate / 2)
-    }
+    private val holes = setOf(Coordinate(0              , 0              ),
+                              Coordinate(0              , maxOrdinate    ),
+                              Coordinate(maxOrdinate    , 0              ),
+                              Coordinate(maxOrdinate    , maxOrdinate    ),
+                              Coordinate(maxOrdinate / 2, maxOrdinate / 2))
 
+    fun inHole(coord: Coordinate) = coord in holes
 }
 
 data class Coordinate(val row: Int, val col: Int) {
