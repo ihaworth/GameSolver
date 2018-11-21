@@ -14,13 +14,21 @@ class JumpIn {
         if (board.inHole(rabbit))
             return ""
 
-        if (board.pieceAt(rabbit.plus( west)) == 'M') return "W"
-        if (board.pieceAt(rabbit.plus(north)) == 'M') return "N"
-        if (board.pieceAt(rabbit.plus( east)) == 'M') return "E"
-        if (board.pieceAt(rabbit.plus(south)) == 'M') return "S"
+        listOf(west, north, east, south).forEach { dir ->
+            if (board.pieceAt(rabbit.plus(dir)) == 'M') return toText(dir)
+        }
 
         return ""
     }
+
+    private fun toText(dir: Vector) =
+            when (dir) {
+                west  -> "W"
+                north -> "N"
+                east  -> "E"
+                south -> "S"
+                else  -> ""
+            }
 }
 
 val  west = Vector( 0, -1)
