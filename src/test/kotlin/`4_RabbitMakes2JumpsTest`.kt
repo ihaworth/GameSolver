@@ -19,4 +19,30 @@ class SingleRabbitMakes2JumpsTest {
                 "       "), equalTo("W(NW)"))
     }
 
+    @Test
+    fun jumpWNtoEndUpInNWHole() {
+        assertThat(jumpIn.solve(
+
+                "       ",
+                "M      ",
+                " MW    ",
+                "       ",
+                "       ",
+                "       ",
+                "       "), equalTo("W(WN)"))
+    }
+
+    @Test
+    fun jumpNEtoEndUpInNEHole() {
+        assertThat(jumpIn.solve(
+
+                "     M ",
+                "    M  ",
+                "    W  ",
+                "       ",
+                "       ",
+                "       ",
+                "       "), equalTo("W(NE)"))
+    }
+
 }
