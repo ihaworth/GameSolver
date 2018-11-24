@@ -1,6 +1,5 @@
 import org.hamcrest.CoreMatchers.equalTo
 import org.hamcrest.MatcherAssert.assertThat
-import org.junit.Ignore
 import org.junit.Test
 
 class SingleRabbitMakes2JumpsTest {
@@ -46,7 +45,6 @@ class SingleRabbitMakes2JumpsTest {
                 "       "), equalTo("W(NE)"))
     }
 
-    @Ignore
     @Test
     fun jumpENtoEndUpInNEHole() {
         assertThat(jumpIn.solve(

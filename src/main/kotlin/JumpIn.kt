@@ -2,24 +2,27 @@ class JumpIn {
 
     fun solve(vararg board: String): String {
 
-        val move = solve('W', Board(board as Array<String>))
+        val move = solve('W', mapOf("" to Board(board as Array<String>)))
 
         return if (move.isEmpty()) "" else "W($move)"
     }
 
-    private fun solve(bunny: Char, board: Board): String {
+    private fun solve(bunny: Char, movesToBoard: Map<String, Board>): String {
 
-        val rabbit = board.locate(bunny)
+        val nextMovesToBoard = movesToBoard.
+                flatMap { (moves, board) ->
 
-        if (board.inHole(rabbit))
-            return ""
+                    val rabbit = board.locate(bunny)
 
-        listOf(west, north, east, south).forEach { dir ->
-            if (board.pieceAt(rabbit.plus(dir)) == 'M')
-                return toText(dir) + solve(bunny, board.move(bunny, dir + dir))
-        }
+                    if (board.inHole(rabbit))
+                        return moves
 
-        return ""
+                    listOf(west, north, east, south).
+                            filter { dir -> board.pieceAt(rabbit.plus(dir)) == 'M' }.
+                            map { dir -> moves + toText(dir) to board.move(bunny, dir + dir) }
+                }.toMap()
+
+        return solve(bunny, nextMovesToBoard)
     }
 
     private fun toText(dir: Vector) =
